@@ -1,0 +1,9 @@
+# todo-py ######################################################################
+## A simple todo list manager written in python ################################
+### Usage ######################################################################
+ todo.py <cmd> <args>
+ todo.py add This is my todo item
+ todo.py ls
+ todo.py edit 14
+ todo.py birdseye
+ ...

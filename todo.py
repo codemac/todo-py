@@ -58,8 +58,8 @@ def fullparse_entries(filename):
             line_count += 1
             line_dates = date_pat.findall(line)
             line_times = time_pat.findall(line)
-            line_projects = project_pat.findall(line)
-            line_contexts = context_pat.findall(line)
+            line_projects = [x.strip() for x in project_pat.findall(line)]
+            line_contexts = [x.strip() for x in context_pat.findall(line)]
             ret_data.append((line_count, line,
                              line_dates, line_times,
                              line_projects, line_contexts))

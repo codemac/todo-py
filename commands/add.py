@@ -9,6 +9,9 @@ def register(COMMANDS, subparser):
     COMMANDS['add'] = run
 
 def run(args):
-    with open(args.todofile, 'a') as f:
-        todo.validate_entry(args.text)
-        f.write(args.text + '\n')
+    todo.validate_entry(args.text)
+
+    with open(args.todofile, 'r+b') as f:
+        newlines = [x.strip() for x in f.readlines() if x]
+        newlines.append(args.text)
+        f.writelines([x + '\n' for x in newlines])

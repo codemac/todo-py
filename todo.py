@@ -84,8 +84,14 @@ def validate_entry(line):
         for tl in line_times:
             datetime.datetime.strptime(tl[2:], format_time)
 
+commands.base.init_commands(subparser)
+
+def run(args):
+    parsed = parser.parse_args(args)
+    commands.base.run(parsed.command_name, parsed)
+
 if __name__ == "__main__":
-    commands.base.init_commands(subparser)
-    parsed = parser.parse_args(sys.argv[1:])
-    commands.base.run(parsed.command_name,
-                      parsed)
+    run(sys.argv[1:])
+
+
+

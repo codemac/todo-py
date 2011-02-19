@@ -14,6 +14,6 @@ def init_commands(subparser):
 
 def run(command, args):
     if command in COMMANDS:
-        COMMANDS[command](args)
+        return COMMANDS[command](args)
     else:
         raise NotImplementedError

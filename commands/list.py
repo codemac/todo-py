@@ -44,13 +44,16 @@ def run(args):
             if searching and find_match(line, args.search): 
                 toprint.append((line.strip(), lineno_count))
             else:
-                toprint.append((line.strip(), lineno_count))
+                strdline = line.strip()
+                if strdline:
+                    toprint.append((strdline, lineno_count))
 
     toprint.sort()
 
     lineno_count = len(str(lineno_count))
-    for l, n in toprint:
-        print "{:0={ww}} {}".format(n, l, ww=lineno_count)
+    to_ret = ''.join(["{:0={ww}} {}\n".format(n, l, ww=lineno_count) for l, n in toprint])
+    return to_ret
+
 
 def run_projects(args):
     if args.search:

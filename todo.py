@@ -88,10 +88,12 @@ commands.base.init_commands(subparser)
 
 def run(args):
     parsed = parser.parse_args(args)
-    commands.base.run(parsed.command_name, parsed)
+    return commands.base.run(parsed.command_name, parsed)
 
 if __name__ == "__main__":
-    run(sys.argv[1:])
+    out = run(sys.argv[1:])
+    if out:
+        print out.strip()
 
 
 
